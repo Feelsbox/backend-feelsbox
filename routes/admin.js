@@ -8,7 +8,11 @@ const middlewareAdmin = require('../middleware/admin');
 const middlewareBasic = require('../middleware/basic');
 
 router.group('/admin', [middlewareBasic,middlewareAdmin], (router) => {
-    router.get('/jadwalPsikolog', welcome);
+    
+    // jadwal
+    router.get('/', welcome);
+
+
 });
 
 let routerAdmin = router.init();

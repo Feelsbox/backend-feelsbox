@@ -8,7 +8,8 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      user_id: {
+      user_code: {
+        foreignKey: true,
         type: Sequelize.STRING
       },
       tanggal: {

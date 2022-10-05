@@ -9,6 +9,7 @@ var indexRouter = require('./routes/index');
 const registerRouter = require('./routes/register');
 const loginRouter = require('./routes/login');
 const routerAdmin = require('./routes/admin');
+const routerPsikolog = require('./routes/psikolog');
 
 var app = express();
 
@@ -25,5 +26,6 @@ app.use('/register', registerRouter);
 app.use('/login', loginRouter);
 
 app.use(routerAdmin)
+app.use(routerPsikolog)
 
 module.exports = app;
