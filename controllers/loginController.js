@@ -27,6 +27,7 @@ exports.loginUser = async (req, res) => {
         const token = jsonwebtoken.sign({
             email: user.email,
             code: user.code,
+            role: user.role,
         }, process.env.JWT_KEY, {
             expiresIn: "1d"
         });

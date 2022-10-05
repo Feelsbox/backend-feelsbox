@@ -12,6 +12,8 @@
     "debug": "~2.6.9",
     "dotenv": "^16.0.3",
     "express": "~4.16.1",
+    "express-group-router": "^2.1.0",
+    "express-group-routes": "^1.1.0",
     "express-validator": "^6.14.2",
     "helmet": "^6.0.0",
     "jsonwebtoken": "^8.5.1",
