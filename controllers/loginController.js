@@ -9,22 +9,24 @@ exports.loginUser = async (req, res) => {
 
     const user = await User.findOne({
         where: {
-            useremail: email
+            email
         }
     });
     
     try{
-        const result = await bcrypt.compare(password, user.password);
 
-        if(!user && !result) {
+        const result = bcrypt.compareSync(password, user.password);
+        
+        // jika user tidak ditemukan dan password salah
+        if(!user || !result){
             return res.status(401).json({
-                message: 'Auth failed'
+                message: 'Email or password is wrong'
             });
         }
 
         const token = jsonwebtoken.sign({
             email: user.email,
-            userId: user.id
+            code: user.code,
         }, process.env.JWT_KEY, {
             expiresIn: "1d"
         });
@@ -35,7 +37,7 @@ exports.loginUser = async (req, res) => {
         });
     }catch(err){
         return res.status(401).json({
-            message: 'Auth failed'
+            error: err
         });
     }
 }

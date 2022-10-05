@@ -5,34 +5,34 @@ const jsonwebtoken = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
 
 exports.registerUser = async (req, res) => {
-    const {username, password, email, phone, device, deviceId} = req.body;
+    const {name, email, password, role, jenis_kelamin, tanggal_lahir, domisili, phone} = req.body;
 
-    try{
-        const hash = await bcrypt.hash(password, 10);
+    try {
+
+        const hashPassword = bcrypt.hashSync(password,10)
+
+        const code = Math.random().toString(36).substring(2, 5);
 
         const user = await User.create({
-            username: username,
-            password: hash,
-            userEmail: email,
-            phone: phone,
-            device: device,
-            deviceid: deviceId
+            code,
+            name,
+            email,
+            password : hashPassword,
+            role,
+            jenis_kelamin,
+            tanggal_lahir,
+            domisili,
+            phone
         });
 
-        const token = jsonwebtoken.sign({
-            email: user.email,
-            userId: user.id
-        }, process.env.JWT_KEY, {
-            expiresIn: "1d"
+        res.status(201).json({
+            message: 'User created successfully',
+            user,
         });
 
-        return res.status(201).json({
-            message: 'User created',
-            token: token
-        });
-    }catch(err){
-        return res.status(500).json({
-            message: 'Auth failed'
+    } catch (error) {
+        res.status(500).json({
+            message: error.message,
         });
     }
 }
