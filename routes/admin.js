@@ -3,7 +3,7 @@ let router = new Router();
 
 
 const { welcome } = require("../controllers/welcomeController");
-const { tesMental } = require("../controllers/tesmentalController");
+const { createtesMental, getAlltesMental } = require("../controllers/tesmentalController");
 const middlewareAdmin = require('../middleware/admin');
 
 const middlewareBasic = require('../middleware/basic');
@@ -14,7 +14,8 @@ router.group('/admin', [middlewareBasic,middlewareAdmin], (router) => {
     router.get('/', welcome);
 
     // tes mental
-    router.post('/tesmental', tesMental);
+    router.get('/tesmental', getAlltesMental);
+    router.post('/tesmental', createtesMental);
 
 
 });

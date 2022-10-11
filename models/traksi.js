@@ -14,9 +14,27 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   traksi.init({
-    tes_mental_id: DataTypes.BIGINT,
-    user_code: DataTypes.STRING,
-    psikolog_code: DataTypes.STRING,
+    tes_mental_id: {
+      type: DataTypes.BIGINT,
+      references: {
+        model: 'tesmental',
+        key: 'id'
+      }
+    },
+    user_code: {
+      type: DataTypes.STRING,
+      references: {
+        model: 'user',
+        key: 'code'
+      }
+    },
+    psikolog_code: {
+      type: DataTypes.STRING,
+      references: {
+        model: 'user',
+        key: 'code'
+      }
+    },
     total_jam_konseling: DataTypes.INTEGER,
     total_kuesioner: DataTypes.INTEGER,
     total_psikolog: DataTypes.INTEGER
@@ -25,14 +43,19 @@ module.exports = (sequelize, DataTypes) => {
     modelName: 'traksi',
   });
 
-  traksi.associate = function(models) {
-    traksi.belongsTo(models.tesmental, {
-      foreignKey: 'tes_mental_id',
-    });
-    traksi.belongsTo(models.User, {
-      foreignKey: 'user_code',
-      foreignKey: 'psikolog_code',
-    });
-  }
+ 
+  // traksi.associate = function(models) {
+  //   traksi.belongsTo(models.tesmental, {
+  //     foreignKey: 'tes_mental_id',
+  //   });
+  //   traksi.belongsTo(models.User, {
+  //     foreignKey: 'user_code',
+  //     as: 'user'
+  //   });
+  //   traksi.belongsTo(models.User, {
+  //     foreignKey: 'psikolog_code',
+  //     as: 'user'
+  //   });
+  // }
   return traksi;
 };
