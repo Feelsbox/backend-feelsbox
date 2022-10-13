@@ -6,6 +6,7 @@ const { welcome } = require("../controllers/welcomeController");
 const { createtesMental, getAlltesMental, edittesMental } = require("../controllers/tesmentalController");
 const { createTeam, getAllTeam, getTeamByCode, editTeam, deleteTeam } = require("../controllers/teamController");
 const { getVerifiedPsikolog, unverifiedPsikolog, verifyPsikolog } = require("../controllers/psikologController");
+const { editLandingPage } = require('../controllers/landingPagesController');
 const middlewareAdmin = require('../middleware/admin');
 
 const middlewareBasic = require('../middleware/basic');
@@ -31,6 +32,9 @@ router.group('/admin', [middlewareBasic,middlewareAdmin], (router) => {
     router.get('/psikolog', getVerifiedPsikolog);
     router.get('/psikolog/verifikasi', unverifiedPsikolog);
     router.put('/psikolog/verifikasi/:code', verifyPsikolog);
+
+    // landing page
+    router.put('/landing-page', editLandingPage);
 
 });
 
