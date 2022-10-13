@@ -3,7 +3,9 @@ let router = new Router();
 
 
 const { welcome } = require("../controllers/welcomeController");
-const { createtesMental, getAlltesMental } = require("../controllers/tesmentalController");
+const { createtesMental, getAlltesMental, edittesMental } = require("../controllers/tesmentalController");
+const { createTeam, getAllTeam, getTeamByCode, editTeam, deleteTeam } = require("../controllers/teamController");
+const { getVerifiedPsikolog, unverifiedPsikolog, verifyPsikolog } = require("../controllers/psikologController");
 const middlewareAdmin = require('../middleware/admin');
 
 const middlewareBasic = require('../middleware/basic');
@@ -16,7 +18,19 @@ router.group('/admin', [middlewareBasic,middlewareAdmin], (router) => {
     // tes mental
     router.get('/tesmental', getAlltesMental);
     router.post('/tesmental', createtesMental);
+    router.put('/tesmental/:id', edittesMental);
 
+    // teams 
+    router.get('/teams', getAllTeam);
+    router.get('/team/:code', getTeamByCode);
+    router.post('/teams', createTeam);
+    router.put('/team/:code', editTeam);
+    router.delete('/team/:code', deleteTeam);
+
+    // psikolog
+    router.get('/psikolog', getVerifiedPsikolog);
+    router.get('/psikolog/verifikasi', unverifiedPsikolog);
+    router.put('/psikolog/verifikasi/:code', verifyPsikolog);
 
 });
 

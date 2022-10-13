@@ -18,7 +18,7 @@ module.exports = (sequelize, DataTypes) => {
     keluhan: DataTypes.STRING
   }, {
     sequelize,
-    modelName: 'keluhan',
+    modelName: 'Keluhan',
   });
 
   keluhan.associate = function(models) {
