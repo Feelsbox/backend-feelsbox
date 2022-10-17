@@ -11,7 +11,7 @@ const middlewareAdmin = require('../middleware/admin');
 
 const middlewareBasic = require('../middleware/basic');
 
-router.group('/admin', [middlewareBasic,middlewareAdmin], (router) => {
+router.group('/admin', [middlewareBasic, middlewareAdmin], (router) => {
     
     // jadwal
     router.get('/', welcome);
