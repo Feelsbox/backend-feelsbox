@@ -1,20 +1,22 @@
 'use strict';
 require('dotenv').config();
 const {Keluhan} = require('../models');
-const {User} = require('../models');
+const {auth} = require('../middleware/basic')
 
 exports.createKeluhan = async (req, res) => {
     const { keluhan } = req.body;
-    const {code} = User.code;
+    // get user code from authorization
+    const user_code = req.user.code;
 
     try {
-        const keluhan = await Keluhan.create({
+        const keluhans = await Keluhan.create({
+            user_code,
             keluhan
         });
 
         res.status(201).json({
             message: 'Keluhan created successfully',
-            keluhan,
+            keluhans,
         });
 
     } catch (err) {
