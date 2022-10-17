@@ -12,3 +12,4 @@ exports.validationLogin = [
     check('email', 'Username tidak boleh kosong').notEmpty(),
     check('password', 'Password tidak boleh kosong').notEmpty(),
 ];
+

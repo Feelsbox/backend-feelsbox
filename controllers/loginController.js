@@ -7,6 +7,8 @@ const bcrypt = require('bcrypt');
 exports.loginUser = async (req, res) => {
     const {email, password} =  req.body;
 
+    console.log(req.body);
+
     const user = await User.findOne({
         where: {
             email
@@ -31,14 +33,15 @@ exports.loginUser = async (req, res) => {
         }, process.env.JWT_KEY, {
             expiresIn: "1d"
         });
-
+        console.log(token);
         return res.status(200).json({
             message: 'Auth successful',
             token: token
         });
     }catch(err){
         return res.status(401).json({
-            error: err
+            message: 'Auth failed'
         });
     }
 }
+

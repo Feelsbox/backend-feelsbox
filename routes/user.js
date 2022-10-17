@@ -1,19 +1,18 @@
 const Router = require('express-group-router');
 let router = new Router();
 
-const { welcome } = require("../controllers/welcomeController");
-const { createKeluhan } = require('../controllers/keluhanController');
+const middlewareUser = require('../middleware/user');
+const middlewareBasic = require('../middleware/basic');
 
+const {homePageUser} = require('../controllers/homePageController');
 
-const { basic } = require('../middleware/basic')
-
-router.group('/user', [basic], (router) => {
-
-    // keluhan
-    router.post('/keluhan', createKeluhan);
+router.group('/user', [middlewareBasic, middlewareUser], (router) => {
+    
+    // jadwal
+    router.get('/home', homePageUser);
 
 });
 
-let routerUser = router.init();
+let routerAdmin = router.init();
 
-module.exports = routerUser;
+module.exports = routerAdmin;

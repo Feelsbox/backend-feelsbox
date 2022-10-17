@@ -4,7 +4,6 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 const helmet = require("helmet");
 
-
 var indexRouter = require('./routes/index');
 const registerRouter = require('./routes/register');
 const loginRouter = require('./routes/login');
@@ -13,8 +12,8 @@ const routerPsikolog = require('./routes/psikolog');
 const routerUser = require('./routes/user');
 
 var app = express();
-
-app.use(helmet());
+var cors = require('cors');
+app.use(cors());
 
 app.use(logger('dev'));
 app.use(express.json());
