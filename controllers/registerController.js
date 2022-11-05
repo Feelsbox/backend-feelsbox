@@ -5,7 +5,23 @@ const jsonwebtoken = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
 
 exports.registerUser = async (req, res) => {
-    const {name, email, password, role, jenis_kelamin, tanggal_lahir, domisili, phone} = req.body;
+    const {
+        // section 1
+        name, 
+        email, 
+        password,  
+        phone,
+        
+        // section 2
+        gender,
+        umur,
+        domisili, 
+
+        // section 3
+        jenis_pekerjaan,
+        tempat_pendidikan,
+        
+    } = req.body;
 
     try {
 
@@ -14,15 +30,20 @@ exports.registerUser = async (req, res) => {
         const code = Math.random().toString(36).substring(2, 5);
 
         const user = await User.create({
-            code,
-            name,
-            email,
-            password : hashPassword,
-            role,
-            jenis_kelamin,
-            tanggal_lahir,
-            domisili,
-            phone
+            // section 1
+            name, 
+            email, 
+            password : hashPassword,  
+            phone,
+
+            // section 2
+            gender,
+            umur,
+            domisili, 
+
+            // section 3
+            jenis_pekerjaan,
+            tempat_pendidikan,
         });
 
         res.status(201).json({
