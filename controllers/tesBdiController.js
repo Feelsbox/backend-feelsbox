@@ -18,21 +18,85 @@ exports.getSoalBdi = async (req, res) => {
 
 exports.penilaianTesBdi = async (req, res) => {
 
-    const {jawabans} = req.body
+    const jawabans = req.body
 
+    console.log(jawabans)
     const soalBdi = await Bdi.findAll();
-
     let nilai = 0;
 
     soalBdi.forEach((item, index) => {
-        if (item.jawaban == jawaban[index]) {
-            nilai += 1;
-        }
+        nilai += parseInt(jawabans[index].jawaban)
+        console.log(nilai)
     });
 
-    res.status(200).json({
-        message: 'Get All Soal Bdi successfully',
-        data: nilai,
-    });
+    // persentase dari variabel nilai dengan max 88
+    const persentase = (nilai / 40) * 100;
 
+    let keterangan;
+    let emote;
+
+    console.log(persentase)
+
+    if(nilai <= 10){
+        emote = "😎"
+        keterangan = 'Suasana Perasaan Normal'
+        return res.status(200).json({
+            message: 'Nilai BDI',
+            nilai: nilai,
+            keterangan,
+            emote,
+            style: persentase
+        });
+    }else if(nilai <= 16){
+        emote = "😀"
+        keterangan = "Perasaan Murung"
+        return res.status(200).json({
+            message: 'Nilai BDI',
+            nilai: nilai,
+            keterangan,
+            emote,
+            style: persentase
+        });
+    }else if(nilai <= 20){
+        emote = "🙂"
+        keterangan = "Tanda - tanda Mulai Depresi"
+        return res.status(200).json({
+            message: 'Nilai BDI',
+            nilai: nilai,
+            keterangan,
+            emote,
+            style: persentase
+        });
+    }else if(nilai <= 30){
+        emote = "😐"
+        keterangan = "Depresi Ringan"
+        return res.status(200).json({
+            message: 'Nilai BDI',
+            nilai: nilai,
+            keterangan,
+            emote,
+            style: persentase
+        });
+    }else if(nilai <= 40){
+        emote = "😕"
+        keterangan = "Depresi Sedang"
+        return res.status(200).json({
+            message: 'Nilai BDI',
+            nilai: nilai,
+            keterangan,
+            emote,
+            style: persentase
+        });
+    }else if(nilai > 40){
+        console.log("masuk")
+        emote = "😟"
+        keterangan = "Depresi Berat"
+        return res.status(200).json({
+            message: 'Nilai BDI',
+            nilai: nilai,
+            keterangan,
+            emote,
+            style: 99
+        });
+    }
 }
