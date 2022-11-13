@@ -27,10 +27,16 @@ module.exports = {
       jenis_kelamin: {
         type: Sequelize.STRING
       },
-      tanggal_lahir: {
-        type: Sequelize.DATE
+      umur: {
+        type: Sequelize.STRING
       },
       domisili: {
+        type: Sequelize.STRING
+      },
+      jenis_pekerjaan:{
+        type: Sequelize.STRING
+      },
+      lokasi:{
         type: Sequelize.STRING
       },
       image: {

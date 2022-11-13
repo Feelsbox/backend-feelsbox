@@ -3,7 +3,7 @@ let router = new Router();
 
 
 const { welcome } = require("../controllers/welcomeController");
-const { createtesMental, getAlltesMental, edittesMental } = require("../controllers/tesmentalController");
+// const { createtesMental, getAlltesMental, edittesMental } = require("../controllers/tesmentalController");
 const { createTeam, getAllTeam, getTeamByCode, editTeam, deleteTeam } = require("../controllers/teamController");
 const { getVerifiedPsikolog, unverifiedPsikolog, verifyPsikolog } = require("../controllers/psikologController");
 const { editLandingPage } = require('../controllers/landingPagesController');
@@ -17,10 +17,10 @@ router.group('/admin', [middlewareBasic, middlewareAdmin], (router) => {
     // jadwal
     router.get('/', welcome);
 
-    // tes mental
-    router.get('/tesmental', getAlltesMental);
-    router.post('/tesmental', createtesMental);
-    router.put('/tesmental/:id', edittesMental);
+    // // tes mental
+    // router.get('/tesmental', getAlltesMental);
+    // router.post('/tesmental', createtesMental);
+    // router.put('/tesmental/:id', edittesMental);
 
     // teams 
     router.get('/teams', getAllTeam);

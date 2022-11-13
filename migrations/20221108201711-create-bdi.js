@@ -1,39 +1,26 @@
 'use strict';
-/** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable('teams', {
+    await queryInterface.createTable('Bdis', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      code: {
+      soal: {
         type: Sequelize.STRING
       },
-      name: {
+      nomor_1: {
         type: Sequelize.STRING
       },
-      image: {
+      nomor_2: {
         type: Sequelize.STRING
       },
-      jabatan: {
+      nomor_3: {
         type: Sequelize.STRING
       },
-      role: {
-        type: Sequelize.STRING
-      },
-      deskripsi: {
-        type: Sequelize.TEXT('long')
-      },
-      instagram: {
-        type: Sequelize.STRING
-      },
-      linkedin: {
-        type: Sequelize.STRING
-      },
-      gmail: {
+      nomor_4: {
         type: Sequelize.STRING
       },
       createdAt: {
@@ -47,6 +34,6 @@ module.exports = {
     });
   },
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable('teams');
+    await queryInterface.dropTable('Bdis');
   }
 };

@@ -36,7 +36,8 @@ exports.loginUser = async (req, res) => {
         console.log(token);
         return res.status(200).json({
             message: 'Auth successful',
-            token: token
+            token: token,
+            role: user.role,
         });
     }catch(err){
         return res.status(401).json({

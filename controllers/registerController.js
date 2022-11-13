@@ -13,18 +13,19 @@ exports.registerUser = async (req, res) => {
         phone,
         
         // section 2
-        gender,
+        jenis_kelamin,
         umur,
         domisili, 
 
         // section 3
         jenis_pekerjaan,
-        tempat_pendidikan,
+        lokasi,
         
     } = req.body;
 
-    try {
+    console.log(req.body)
 
+    try {
         const hashPassword = bcrypt.hashSync(password,10)
 
         const code = Math.random().toString(36).substring(2, 5);
@@ -33,17 +34,14 @@ exports.registerUser = async (req, res) => {
             // section 1
             name, 
             email, 
-            password : hashPassword,  
+            password: hashPassword,
             phone,
-
-            // section 2
-            gender,
+            role: "user",
+            jenis_kelamin,
             umur,
             domisili, 
-
-            // section 3
             jenis_pekerjaan,
-            tempat_pendidikan,
+            lokasi,
         });
 
         res.status(201).json({
