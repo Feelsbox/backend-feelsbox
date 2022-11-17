@@ -1,9 +1,8 @@
-const {Bdi} = require('../models')
+const {TesBdi} = require('../models')
 
 exports.getSoalBdi = async (req, res) => {
     try {
-        const soalBdi = await Bdi.findAll();
-
+        const soalBdi = await TesBdi.findAll();
         res.status(200).json({
             message: 'Get All Soal Bdi successfully',
             data: soalBdi,
@@ -21,7 +20,7 @@ exports.penilaianTesBdi = async (req, res) => {
     const jawabans = req.body
 
     console.log(jawabans)
-    const soalBdi = await Bdi.findAll();
+    const soalBdi = await TesBdi.findAll();
     let nilai = 0;
 
     soalBdi.forEach((item, index) => {
@@ -38,23 +37,21 @@ exports.penilaianTesBdi = async (req, res) => {
     console.log(persentase)
 
     if(nilai <= 10){
-        emote = "😎"
-        keterangan = 'Suasana Perasaan Normal'
+        
         return res.status(200).json({
             message: 'Nilai BDI',
             nilai: nilai,
-            keterangan,
-            emote,
+            keterangan : 'Suasana Perasaan Normal',
+            emote : "😎",
             style: persentase
         });
     }else if(nilai <= 16){
-        emote = "😀"
-        keterangan = "Perasaan Murung"
+    
         return res.status(200).json({
             message: 'Nilai BDI',
             nilai: nilai,
-            keterangan,
-            emote,
+            keterangan : "Perasaan Murung",
+            emote : "😀",
             style: persentase
         });
     }else if(nilai <= 20){

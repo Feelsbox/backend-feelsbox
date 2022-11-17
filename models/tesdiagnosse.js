@@ -15,8 +15,6 @@ module.exports = (sequelize, DataTypes) => {
   }
   TesDiagnosse.init({
     soal: DataTypes.STRING,
-    opsi_1: DataTypes.STRING,
-    opsi_2: DataTypes.STRING
   }, {
     sequelize,
     modelName: 'TesDiagnosse',

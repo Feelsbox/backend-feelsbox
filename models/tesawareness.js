@@ -15,8 +15,6 @@ module.exports = (sequelize, DataTypes) => {
   }
   TesAwareness.init({
     soal: DataTypes.STRING,
-    opsi_1: DataTypes.STRING,
-    opsi_2: DataTypes.STRING
   }, {
     sequelize,
     modelName: 'TesAwareness',

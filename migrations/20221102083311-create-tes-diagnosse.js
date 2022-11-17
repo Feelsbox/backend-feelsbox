@@ -11,12 +11,6 @@ module.exports = {
       soal: {
         type: Sequelize.STRING
       },
-      opsi_1: {
-        type: Sequelize.STRING
-      },
-      opsi_2: {
-        type: Sequelize.STRING
-      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE
