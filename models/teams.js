@@ -25,7 +25,7 @@ module.exports = (sequelize, DataTypes) => {
     gmail: DataTypes.STRING
   }, {
     sequelize,
-    modelName: 'teams',
+    modelName: 'Teams',
   });
   return teams;
 };

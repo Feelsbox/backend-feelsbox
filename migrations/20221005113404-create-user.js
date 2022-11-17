@@ -41,7 +41,8 @@ module.exports = {
       },
       image: {
         allowNull: false,
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
+        defaultValue: 'default.jpg'
       },
       phone: {
         type: Sequelize.STRING
