@@ -8,6 +8,7 @@ const { getAllTeam, getTeamByCode } = require("../controllers/teamController");
 
 /* GET users listing. */
 router.get('/', middleware , welcome);
+
 router.get('/tes', (req,res) => {
     res.send('tes');
 });

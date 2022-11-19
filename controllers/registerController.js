@@ -28,6 +28,20 @@ exports.registerUser = async (req, res) => {
     try {
         const hashPassword = bcrypt.hashSync(password,10)
 
+        // cek apakah ada email yang sama
+        const cekEmail = await User.findOne({
+            where: {
+                email
+            }
+        });
+
+        if(cekEmail){
+            return res.status(409).json({
+                message: 'Email already exists'
+            });
+        }
+
+
         const code = Math.random().toString(36).substring(2, 5);
 
         const user = await User.create({

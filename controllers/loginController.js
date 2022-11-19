@@ -16,7 +16,6 @@ exports.loginUser = async (req, res) => {
     });
     
     try{
-
         const result = bcrypt.compareSync(password, user.password);
         
         // jika user tidak ditemukan dan password salah
@@ -28,8 +27,9 @@ exports.loginUser = async (req, res) => {
 
         const token = jsonwebtoken.sign({
             email: user.email,
-            code: user.code,
+            id: user.id,
             role: user.role,
+            name: user.name,
         }, process.env.JWT_KEY, {
             expiresIn: "1d"
         });

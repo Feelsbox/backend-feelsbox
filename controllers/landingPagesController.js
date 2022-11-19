@@ -1,10 +1,10 @@
 'use strict';
 require('dotenv').config();
-const {landing_pages} = require('../models');
+const {LandingPage} = require('../models');
 
 exports.getLandingPage = async (req, res) => {
     try {
-        const landingPage = await landing_pages.findAll();
+        const landingPage = await LandingPage.findAll();
 
         res.status(200).json({
             message: 'Get Landing Page successfully',
@@ -22,7 +22,7 @@ exports.editLandingPage = async (req, res) => {
     const {visi, misi, about, direct} = req.body;
 
     try {
-        const landingPage = await landing_pages.update({
+        const landingPage = await LandingPage.update({
             visi,
             misi,
             about,

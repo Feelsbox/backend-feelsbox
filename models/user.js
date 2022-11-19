@@ -14,7 +14,6 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   User.init({
-    code: DataTypes.NUMBER,
     name: DataTypes.STRING,
     email: DataTypes.STRING,
     password: DataTypes.STRING,
@@ -32,16 +31,13 @@ module.exports = (sequelize, DataTypes) => {
     modelName: 'User',
   });
 
-  User.associate = function(models) {
-    User.hasMany(models.JadwalPsikolog, {
-      foreignKey: 'user_code',
-    });
-    User.hasMany(models.traksi, {
-      foreignKey: 'user_code',
-    });
-    User.hasMany(models.traksi, {
-      foreignKey: 'psikolog_code',
-    });
-  };
+  // User.associate = function(models) {
+  //   User.hasMany(models.traksi, {
+  //     foreignKey: 'user_id',
+  //   });
+  //   // User.hasMany(models.traksi, {
+  //   //   foreignKey: 'psikolog_code',
+  //   // });
+  // };
   return User;
 };

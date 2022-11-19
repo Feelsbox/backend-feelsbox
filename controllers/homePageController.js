@@ -1,7 +1,23 @@
-exports.homePageUser = (req, res, next) => {
+const {HasilTes} = require('../models')
 
-    res.cookie('token', req.jwt, { httpOnly: true, secure: true });
+exports.homePageUser = async (req, res, next) => {
 
-    res.redirect("http://localhost:3000");
+    const {id} = req.user
+    console.log(id)
+    const hasilTes = await HasilTes.findAll({
+        where: {
+            user_id : id
+        }
+    })
+
+    // looping hasil tes
+    hasilTes.forEach((item) => {
+        console.log(item)
+    })
+
+    res.status(200).json({
+        message: 'Get All Home Page successfully',
+        hasilTes
+    });
 
 };
