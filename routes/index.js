@@ -8,6 +8,10 @@ const { getAllTeam, getTeamByCode } = require("../controllers/teamController");
 
 /* GET users listing. */
 router.get('/', middleware , welcome);
+router.get('/tes', (req,res) => {
+    res.send('tes');
+});
+
 router.get('/home', getLandingPage);
 router.get('/teams', getAllTeam);
 router.get('/team/:code', getTeamByCode);
