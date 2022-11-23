@@ -8,9 +8,14 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      user_code: {
+      user_id: {
         type: Sequelize.INTEGER,
-        foreignKey: true,
+        references: {
+          model: 'Users',
+          key: 'id'
+        },
+        onUpdate: 'cascade',
+        onDelete: 'cascade'
       },
       nilai: {
         type: Sequelize.INTEGER
@@ -18,8 +23,8 @@ module.exports = {
       kesimpulan: {
         type: Sequelize.STRING
       },
-      waktu: {
-        type: Sequelize.DATE
+      type: {
+        type: Sequelize.STRING
       },
       createdAt: {
         allowNull: false,

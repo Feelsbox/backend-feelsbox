@@ -24,7 +24,7 @@ module.exports = {
       role: {
         type: Sequelize.STRING
       },
-      jenis_kelamin: {
+      gender: {
         type: Sequelize.STRING
       },
       umur: {
@@ -36,12 +36,13 @@ module.exports = {
       jenis_pekerjaan:{
         type: Sequelize.STRING
       },
-      lokasi:{
+      instansi:{
         type: Sequelize.STRING
       },
       image: {
         allowNull: false,
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
+        defaultValue: 'images/profile/default.png'
       },
       phone: {
         type: Sequelize.STRING
@@ -51,11 +52,11 @@ module.exports = {
         defaultValue: false
       },
       createdAt: {
-        allowNull: false,
+        allowNull: true,
         type: Sequelize.DATE
       },
       updatedAt: {
-        allowNull: false,
+        allowNull: true,
         type: Sequelize.DATE
       }
     });
