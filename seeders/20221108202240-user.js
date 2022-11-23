@@ -5,19 +5,16 @@ const bcrypt = require('bcrypt');
 
 const user = [
   {
-      code: '1',
       name: 'Admin',
       email: 'admin@feelsbox.id',
       password: bcrypt.hashSync("adminFeelsboxId",10),
       role: 'admin',
-      // gender: 'Laki-laki',
       umur: '20',
       domisili: 'Jakarta',
       jenis_pekerjaan: 'Mahasiswa',
       instansi: 'Jakarta',
   },
   {
-      code: '2',
       name: 'User',
       email: 'tes@gmail.com',
       password: bcrypt.hashSync("aaa",10),
