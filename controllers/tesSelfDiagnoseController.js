@@ -35,14 +35,16 @@ exports.penilaianTesSelfDiagnose = async (req, res) => {
             message: 'Status Self Awarness',
             keterangan: 'Anda Harus Ke Psikolog',
             style: '75',
-            emote: "😟"
+            emote: "😟",
+            deskripsi: "Hendaknya kamu menghubungi psikolog/psikiater. Jangan takut, semua akan baik-baik aja"
         })
     }else{
         return res.status(200).json({
             message: 'Status Self Awarness',
             keterangan: 'Anda Tidak Perlu Ke Psikolog',
             style: '25',
-            emote: "😎"
+            emote: "😎",
+            deskripsi: "Kamu baik baik saja, tetap jaga kesehatan fisik maupun mentalnya ya!"
         })
     }
 

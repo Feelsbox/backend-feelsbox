@@ -1,13 +1,19 @@
 'use strict';
 require('dotenv').config();
 const {User} = require('../models');
+const {Psikolog} = require('../models');
 
-exports.getVerifiedPsikolog = async (req, res) => {
+exports.getAllPsikolog = async (req, res) => {
     try {
         const psikolog = await User.findAll({
             where: {
-                role: 'psikolog',
-                verified: true
+                role: 'psikolog'
+            },
+            attributes: {
+                exclude: ['password']
+            },
+            include: {
+                model: Psikolog,
             }
         });
 
@@ -15,6 +21,8 @@ exports.getVerifiedPsikolog = async (req, res) => {
             message: 'Get All Psikolog successfully',
             data: psikolog,
         });
+  
+
     } catch (err) {
         console.error(err);
         res.status(500).json({
@@ -71,3 +79,4 @@ exports.verifyPsikolog = async (req, res) => {
         })
     }
 }
+

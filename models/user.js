@@ -18,11 +18,11 @@ module.exports = (sequelize, DataTypes) => {
     email: DataTypes.STRING,
     password: DataTypes.STRING,
     role: DataTypes.STRING,
-    jenis_kelamin: DataTypes.STRING,
+    gender: DataTypes.STRING,
     umur: DataTypes.STRING,
     domisili: DataTypes.STRING,
     jenis_pekerjaan: DataTypes.STRING,
-    lokasi: DataTypes.STRING,
+    instansi: DataTypes.STRING,
     image: DataTypes.STRING,
     phone: DataTypes.STRING,
     verified: DataTypes.BOOLEAN
@@ -31,13 +31,14 @@ module.exports = (sequelize, DataTypes) => {
     modelName: 'User',
   });
 
-  // User.associate = function(models) {
-  //   User.hasMany(models.traksi, {
-  //     foreignKey: 'user_id',
-  //   });
-  //   // User.hasMany(models.traksi, {
-  //   //   foreignKey: 'psikolog_code',
-  //   // });
-  // };
+  User.associate = function(models) {
+    User.hasOne(models.Psikolog, {
+      foreignKey: 'user_id',
+    });
+    User.hasMany(models.HasilTes, {
+      foreignKey: 'user_id',
+    })
+  };
+
   return User;
 };

@@ -1,8 +1,13 @@
-'use strict'
 require('dotenv').config();
+
+// model
 const {User} = require('../models');
+const {Psikolog} = require('../models')
+
 const jsonwebtoken = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
+const {client} = require('../wa');
+const wa = client;
 
 exports.registerUser = async (req, res) => {
     const {
@@ -19,7 +24,7 @@ exports.registerUser = async (req, res) => {
 
         // section 3
         jenis_pekerjaan,
-        lokasi,
+        instansi,
         
     } = req.body;
 
@@ -55,12 +60,24 @@ exports.registerUser = async (req, res) => {
             umur,
             domisili, 
             jenis_pekerjaan,
-            lokasi,
+            instansi,
         });
+
+        const token = jsonwebtoken.sign({
+            email: user.email,
+            id: user.id,
+            role: user.role,
+            name: user.name,
+        }, process.env.JWT_KEY, {
+            expiresIn: "1d"
+        });
+
+        // wa.sendMessage(`${phone}@c.us`, `Hai ${name}\nSelamat datang di feelsbox sebuah layanan konseling yang akan membantu menjaga kesehatan mental kamu`)
 
         res.status(201).json({
             message: 'User created successfully',
             user,
+            token
         });
 
     } catch (error) {
@@ -68,4 +85,38 @@ exports.registerUser = async (req, res) => {
             message: error.message,
         });
     }
+}
+
+exports.registerPsikolog  = async (req, res) => {
+    // relasikan data user dan psikolog
+
+    const suratIzin = req.files[0].path;
+
+    const { name, email, instansi, spesialisasi, gender, nomor } = req.body;
+
+    const user = await User.create({
+        name,
+        email,
+        password: bcrypt.hashSync("psikologfeelsbox",10),
+        role: "psikolog",
+        gender,
+        instansi,
+    })
+
+
+    const psikolog = await Psikolog.create({
+        surat_izin: suratIzin,
+        nomor,
+        spesialisasi,
+        user_id: user.id
+    })
+
+
+    res.status(201).json({
+        message: 'Psikolog created successfully',
+        psikolog,
+    });
+
+    
+
 }
