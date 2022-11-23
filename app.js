@@ -17,6 +17,8 @@ const routerPsikolog = require('./routes/psikolog');
 const routerUser = require('./routes/user');
 const routerTesMental = require('./routes/tesMental');
 
+const {main} = require('./wa');
+
 const validateJWT = (req, res, next) => {
   try {
         const token = req.headers.authorization.split(" ")[1];
@@ -34,6 +36,29 @@ const validateJWT = (req, res, next) => {
     }
 }
 
+const multer = require('multer');
+
+const fileStorage = multer.diskStorage({
+    destination: (req, file, cb) => {
+        let path = file.fieldname
+        cb(null, `./public/images/${path}`);
+    },
+    filename: (req, file, cb) => {
+        cb(null, new Date().toISOString().replace(/:/g, '-') + '-' + file.originalname);
+    }
+})
+
+const fileFilter = (req, file, cb) => {
+    if(file.mimetype === 'image/png' || file.mimetype === 'image/jpg' || file.mimetype === 'image/jpeg' || file.mimetype === 'application/pdf'){
+        cb(null, true);
+    } else {
+        cb(null, false);
+    }
+}
+
+
+// main();
+
 const app = express();
 const cors = require('cors')
 app.use(cors());
@@ -43,6 +68,11 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+
+app.use(multer({storage: fileStorage, fileFilter: fileFilter}).any());
+
+app.use(express.static('images'))
+
 
 app.use('/', indexRouter);
 app.use('/register', registerRouter);

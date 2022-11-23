@@ -14,10 +14,10 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   HasilTes.init({
-    user_code: DataTypes.INTEGER,
+    user_id: DataTypes.INTEGER,
     nilai: DataTypes.INTEGER,
     kesimpulan: DataTypes.STRING,
-    waktu: DataTypes.DATE    
+    type: DataTypes.STRING,
   }, {
     sequelize,
     modelName: 'HasilTes',
@@ -25,7 +25,7 @@ module.exports = (sequelize, DataTypes) => {
   
   HasilTes.associate = function(models) {
     HasilTes.belongsTo(models.User, {
-      foreignKey: 'user_code',
+      foreignKey: 'user_id',
       as: 'user'
     });
   };

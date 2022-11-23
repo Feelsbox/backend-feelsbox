@@ -1,13 +1,13 @@
 'use strict';
 require('dotenv').config();
-const {teams} = require('../models');
+const {Teams} = require('../models');
 
 exports.createTeam = async (req, res) => {
     const {code, name, image, jabatan, deskripsi, instagram, linkedin, gmail} = req.body;
 
     try {
             
-            const team = await teams.create({
+            const team = await Teams.create({
                 code,
                 name,
                 image,
@@ -33,7 +33,7 @@ exports.createTeam = async (req, res) => {
 
 exports.getAllTeam = async (req, res) => {
     try {
-        const team = await teams.findAll();
+        const team = await Teams.findAll();
 
         let anggota = [];
 
@@ -58,7 +58,7 @@ exports.getAllTeam = async (req, res) => {
 exports.getTeamByCode = async (req, res) => {
     try {
         const {code} = req.params;
-        const team = await teams.findOne({
+        const team = await Teams.findOne({
             where: {
                 code
             }
@@ -79,7 +79,7 @@ exports.editTeam = async (req, res) => {
     const {name, image, jabatan, deskripsi, instagram, linkedin, gmail} = req.body;
 
     try {
-        const team = await teams.findOne({where: {code: code}});
+        const team = await Teams.findOne({where: {code: code}});
         if (!team) {
             res.status(404).json({
                 message: 'Team not found'
@@ -112,7 +112,7 @@ exports.deleteTeam = async (req, res) => {
     const {code} = req.params;
 
     try {
-        const team = await teams.findOne({where: {code: code}});
+        const team = await Teams.findOne({where: {code: code}});
         if (!team) {
             res.status(404).json({
                 message: 'Team not found'

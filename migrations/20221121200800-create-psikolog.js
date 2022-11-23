@@ -2,51 +2,36 @@
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable('Teams', {
+    await queryInterface.createTable('Psikologs', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      code: {
+      user_id: {
+        type: Sequelize.INTEGER
+      },
+      surat_izin: {
         type: Sequelize.STRING
       },
-      name: {
+      nomor: {
         type: Sequelize.STRING
       },
-      image: {
-        type: Sequelize.STRING
-      },
-      jabatan: {
-        type: Sequelize.STRING
-      },
-      role: {
-        type: Sequelize.STRING
-      },
-      deskripsi: {
-        type: Sequelize.TEXT('long')
-      },
-      instagram: {
-        type: Sequelize.STRING
-      },
-      linkedin: {
-        type: Sequelize.STRING
-      },
-      gmail: {
+      spesialisasi: {
         type: Sequelize.STRING
       },
       createdAt: {
-        allowNull: true,
+        allowNull: false,
         type: Sequelize.DATE
       },
       updatedAt: {
-        allowNull: true,
+        allowNull: false,
         type: Sequelize.DATE
       }
     });
   },
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable('Teams');
+    await queryInterface.dropTable('Psikologs');
   }
 };
