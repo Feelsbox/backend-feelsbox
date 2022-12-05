@@ -6,8 +6,7 @@ const {Psikolog} = require('../models')
 
 const jsonwebtoken = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
-const {client} = require('../wa');
-const wa = client;
+const {client:wa} = require('../wa');
 
 exports.registerUser = async (req, res) => {
     const {
@@ -18,7 +17,7 @@ exports.registerUser = async (req, res) => {
         phone,
         
         // section 2
-        jenis_kelamin,
+        gender,
         umur,
         domisili, 
 
@@ -27,8 +26,6 @@ exports.registerUser = async (req, res) => {
         instansi,
         
     } = req.body;
-
-    console.log(req.body)
 
     try {
         const hashPassword = bcrypt.hashSync(password,10)
@@ -46,9 +43,6 @@ exports.registerUser = async (req, res) => {
             });
         }
 
-
-        const code = Math.random().toString(36).substring(2, 5);
-
         const user = await User.create({
             // section 1
             name, 
@@ -56,7 +50,7 @@ exports.registerUser = async (req, res) => {
             password: hashPassword,
             phone,
             role: "user",
-            jenis_kelamin,
+            gender,
             umur,
             domisili, 
             jenis_pekerjaan,
@@ -71,8 +65,6 @@ exports.registerUser = async (req, res) => {
         }, process.env.JWT_KEY, {
             expiresIn: "1d"
         });
-
-        // wa.sendMessage(`${phone}@c.us`, `Hai ${name}\nSelamat datang di feelsbox sebuah layanan konseling yang akan membantu menjaga kesehatan mental kamu`)
 
         res.status(201).json({
             message: 'User created successfully',

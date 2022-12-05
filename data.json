@@ -1,0 +1,45 @@
+[
+{
+    "va_numbers":[
+        {
+            "bank":"bri",
+            "va_number":"293349609107358265"
+            }
+        ],
+        "payment_amounts":[],
+        "transaction_time":"2022-12-04 18:36:41",
+        "gross_amount":"50000.00",
+        "currency":"IDR",
+        "order_id":"FBX-CSQ-BXM-sfW-IDN",
+        "payment_type":"bank_transfer",
+        "signature_key":"a3660409b4b7114d07f84eb4b81eb021a049ca9c414490624b92b8134e936ff94ea3a793758d68cd9672fc973044c5cbf3f1f253c92df15b820aac2bac201c9b",
+        "status_code":"200",
+        "transaction_id":"f7b86fe6-45aa-4809-89bd-d5f6587f7b13",
+        "transaction_status":"settlement",
+        "fraud_status":"accept",
+        "settlement_time":"2022-12-04 18:48:48",
+        "status_message":"Success, transaction is found",
+        "merchant_id":"G654229334"
+},
+{
+    "va_numbers":[
+        {
+            "bank":"bri",
+            "va_number":"293347605979408350"
+            }
+    ],
+    "payment_amounts":[],
+    "transaction_time":"2022-12-04 18:35:48",
+    "gross_amount":"50000.00",
+    "currency":"IDR",
+    "order_id":"FBX-5S1-uQ4-nZ6-IDN",
+    "payment_type":"bank_transfer",
+    "signature_key":"b600ea4029ec44bbc8a28294402530be992d701ce2fffd19f3739a503ded6082f1ed7341a40f997d7ba4f62f28f34549caa0a9cf892593f9e3229bd413d2df38"
+    ,"status_code":"200",
+    "transaction_id":"e1c34db4-2af4-46dd-8df1-cce2a576af02",
+    "transaction_status":"cancel",
+    "fraud_status":"accept",
+    "status_message":"Success, transaction is found",
+    "merchant_id":"G654229334"
+}
+]

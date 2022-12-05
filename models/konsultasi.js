@@ -3,7 +3,7 @@ const {
   Model
 } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
-  class konsultasi extends Model {
+  class Konsultasi extends Model {
     /**
      * Helper method for defining associations.
      * This method is not a part of Sequelize lifecycle.
@@ -13,28 +13,34 @@ module.exports = (sequelize, DataTypes) => {
       // define association here
     }
   }
-  konsultasi.init({
-    id_pemesanan: DataTypes.STRING,
-    client_code: DataTypes.STRING,
-    psikolog_code: DataTypes.STRING,
-    waktu: DataTypes.TIME,
+  Konsultasi.init({
+    order_id: DataTypes.STRING,
+    client_id: DataTypes.STRING,
+    psikolog_id: DataTypes.STRING,
+    jam: DataTypes.TIME,
     tanggal: DataTypes.DATEONLY,
-    calendar_id: DataTypes.STRING,
     link: DataTypes.STRING,
     status: DataTypes.STRING,
-    bukti_pembayaran: DataTypes.STRING
+    message: DataTypes.BOOLEAN
   }, {
     sequelize,
-    modelName: 'konsultasi',
+    modelName: 'Konsultasi',
   });
 
-  konsultasi.associate = function(models) {
-    konsultasi.belongsTo(models.User, {
-      foreignKey: 'client_code',
-      foreignKey: 'psikolog_code',
+  Konsultasi.associate = function(models) {
+    // relasi ke tabel User sebagai client
+    Konsultasi.belongsTo(models.User, {
+      foreignKey: 'client_id',
+      as: 'client'
     });
 
-    konsultasi.hasMany(models.review);
+    // relasi ke tabel User sebagai psikolog
+    Konsultasi.belongsTo(models.User, {
+      foreignKey: 'psikolog_id',
+      as: 'psikolog'
+    });
+
+    Konsultasi.hasMany(models.review);
   }
-  return konsultasi;
+  return Konsultasi;
 };

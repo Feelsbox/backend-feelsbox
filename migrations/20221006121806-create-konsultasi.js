@@ -9,28 +9,23 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      id_pemesanan: {
+      order_id: {
         type: Sequelize.STRING,
         defaultValue: null
       },
-      client_code: {
+      client_id: {
         foreignKey: true,
         type: Sequelize.STRING
       },
-      psikolog_code: {
+      psikolog_id: {
         foreignKey: true,
         type: Sequelize.STRING
       },
-      waktu: {
+      jam: {
         type: Sequelize.TIME
       },
       tanggal: {
         type: Sequelize.DATEONLY
-      },
-      calendar_id: {
-        allowNull: true,
-        defaultvalue: null,
-        type: Sequelize.STRING
       },
       link: {
         allowNull: true,
@@ -42,10 +37,9 @@ module.exports = {
         defaultvalue: null,
         type: Sequelize.STRING
       },
-      bukti_pembayaran: {
-        allowNull: true,
-        defaultvalue: null,
-        type: Sequelize.STRING
+      message:{
+        defaultValue: false,
+        type: Sequelize.BOOLEAN
       },
       createdAt: {
         allowNull: false,

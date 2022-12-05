@@ -14,10 +14,10 @@ router.group('/tes-mental', (router) => {
     router.post('/bdi', [middlewareBasic, middlewareUser], penilaianTesBdi);
 
     router.get('/self-awarness', getSoalSelfAwarness )
-    router.post('/self-awarness', penilaianTesSelfAwarness)
+    router.post('/self-awarness', [middlewareBasic, middlewareUser], penilaianTesSelfAwarness)
 
     router.get('/self-diagnose', getSoalDiagnosse)
-    router.post('/self-diagnose', penilaianTesSelfDiagnose)
+    router.post('/self-diagnose',[middlewareBasic, middlewareUser], penilaianTesSelfDiagnose)
 })
 
 let routerTesMental = router.init();

@@ -17,13 +17,13 @@ module.exports = {
         onUpdate: 'cascade',
         onDelete: 'cascade'
       },
-      nilai: {
+      bdi: {
         type: Sequelize.INTEGER
       },
-      kesimpulan: {
+      awareness: {
         type: Sequelize.STRING
       },
-      type: {
+      diagnose: {
         type: Sequelize.STRING
       },
       createdAt: {

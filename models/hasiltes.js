@@ -15,9 +15,9 @@ module.exports = (sequelize, DataTypes) => {
   }
   HasilTes.init({
     user_id: DataTypes.INTEGER,
-    nilai: DataTypes.INTEGER,
-    kesimpulan: DataTypes.STRING,
-    type: DataTypes.STRING,
+    bdi: DataTypes.INTEGER,
+    awareness: DataTypes.STRING,
+    diagnose: DataTypes.STRING,
   }, {
     sequelize,
     modelName: 'HasilTes',

@@ -1,5 +1,7 @@
 'use strict'
 const {TesAwareness} = require('../models');
+const {HasilTes} = require('../models')
+
 
 exports.getSoalSelfAwarness = async (req, res) => {
     try {
@@ -19,6 +21,10 @@ exports.getSoalSelfAwarness = async (req, res) => {
 
 exports.penilaianTesSelfAwarness = async (req, res) => {
 
+    // update hasil tes self awareness 
+
+
+
     let sesi1 = req.body.sesi1;
     let sesi2 = req.body.sesi2;
 
@@ -32,22 +38,53 @@ exports.penilaianTesSelfAwarness = async (req, res) => {
         nilaisesi2 += parseInt(sesi2[i].jawaban)
     }
 
+    var keterangan = '';
+    var emote = '';
+    var deskripsi = '';
+    var style = '';
+
     if(nilaisesi1 >= 5 && nilaisesi2 >=1){
-        return res.status(200).json({
-            message: 'Status Self Awarness',
-            keterangan: 'Anda Harus Ke Psikolog',
-            style: '75',
-            emote: "😟",
-            deskripsi: "Jangan takut untuk menghubungi psikolog untuk berkonsultasi terkait kesehatan mentalmu. \n Kesehatan mental sama pentingnya dengan kesehatan fisik."
-        })
+        keterangan = 'Anda Harus Ke Psikolog',
+        style = '75',
+        emote = "😟",
+        deskripsi= "Jangan takut untuk menghubungi psikolog untuk berkonsultasi terkait kesehatan mentalmu. \n Kesehatan mental sama pentingnya dengan kesehatan fisik."
     }else{
-        return res.status(200).json({
-            message: 'Status Self Awarness',
-            keterangan: 'Anda Tidak Perlu Ke Psikolog',
-            style: '25',
-            emote: "😎",
-            deskripsi: "Kamu baik baik saja, tetap jaga kesehatan fisik maupun mentalnya ya! "
+        keterangan = 'Anda Tidak Perlu Ke Psikolog',
+        style = '25',
+        emote = "😎",
+        deskripsi = "Kamu baik baik saja, tetap jaga kesehatan fisik maupun mentalnya ya! "
+    }
+
+    const tesSebelumnya = await HasilTes.findOne({
+        where: {
+            user_id: req.user.id
+        }
+    })
+
+    if(tesSebelumnya){
+        const tesUpdate = await HasilTes.update({
+            awareness: keterangan,
+        },{
+            where: {
+                user_id: req.user.id
+            }
+        })
+        
+    }else{
+        const tesBaru = await HasilTes.create({
+            user_id: req.user.id,
+            awareness: keterangan,
         })
     }
+        
+
+
+    return res.status(200).json({
+        message: 'Status Self Awarness',
+        keterangan,
+        style,
+        emote,
+        deskripsi
+    })
 
 }

@@ -14,7 +14,7 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   JadwalPsikolog.init({
-    user_code: DataTypes.STRING,
+    user_id: DataTypes.STRING,
     tanggal: DataTypes.DATEONLY,
     jam: DataTypes.TIME
   }, {
@@ -23,9 +23,12 @@ module.exports = (sequelize, DataTypes) => {
   });
 
   JadwalPsikolog.associate = function(models) {
+    // relasi ke tabel User sebagai psikolog
     JadwalPsikolog.belongsTo(models.User, {
-      foreignKey: 'user_code',
+      foreignKey: 'user_id',
+      as: 'psikolog'
     });
+
   };
 
   return JadwalPsikolog;

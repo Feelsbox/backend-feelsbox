@@ -17,11 +17,17 @@ exports.getAllHasilTes = async (req, res) => {
                     [Op.not]: ['admin', 'psikolog']
                 }
             },
+            
             include: {
                 model: HasilTes,
+                // order created at
+                order: [
+                    ['createdAt', 'DESC']
+                ]
             }
         });
        
+
         res.status(200).json({
             message: 'Get All Hasil Tes successfully',
             data: hasilTes,

@@ -4,16 +4,8 @@
 const hasilTes = [
   {
     user_id: 2,
-    nilai: 35,
-    kesimpulan : "Depresi Sedang",
-    type: "bdi",
-    createdAt: new Date(),
-    updatedAt: new Date()
-  },
-  {
-    user_id: 2,
-    kesimpulan: "psikolog",
-    type: "self-awareness",
+    bdi: 35,
+    awareness: "psikolog",
     createdAt: new Date(),
     updatedAt: new Date()
   },

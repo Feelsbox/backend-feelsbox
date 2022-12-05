@@ -1,6 +1,7 @@
 const {HasilTes} = require('../models')
 
 const {User} = require('../models')
+const Op = require('sequelize').Op;
 
 exports.homePageUser = async (req, res, next) => {
 
@@ -26,36 +27,42 @@ exports.homePageUser = async (req, res, next) => {
 
 exports.homePageAdmin = async (req, res, next) => {
 
-    const users = await User.findAll();
-
-    
+    const users = await User.findAll({
+        // kecuali role admin dan psikolog
+        where: {
+            role: {
+                [Op.not]: ['admin', 'psikolog']
+            }
+        }
+    });
     const usia = [0,0,0,0,0,0,]
-
+    
     const genders = [0,0,0]
-
+    
     users.forEach((data) => {
        switch(data.umur){
-            case 'remaja awal':
-                usia[0] += 1
+           case 'remaja awal':
+               usia[0] += 1
+               break;
+               case 'remaja akhir':
+                   usia[1] += 1
                 break;
-            case 'remaja akhir':
-                usia[1] += 1
-                break;
-            case 'dewasa awal':
-                usia[2] += 1
-                break;
-            case 'dewasa akhir':
-                usia[3] += 1
-                break;
+                case 'dewasa awal':
+                    usia[2] += 1
+                    break;
+                    case 'dewasa akhir':
+                        usia[3] += 1
+                        break;
             case 'lansia awal':
                 usia[4] += 1
                 break;
-            case 'lansia akhir':
-                usia[5] += 1
-                break;
-       }
+                case 'lansia akhir':
+                    usia[5] += 1
+                    break;
+                }
 
-       switch(data.gender){
+        console.log(data.gender)
+        switch(data.gender){
             case 'pria':
                 genders[0] += 1
                 break;
@@ -65,9 +72,10 @@ exports.homePageAdmin = async (req, res, next) => {
             case 'lainnya':
                 genders[2] += 1
                 break;
-       }
+            }
     })
-    
+                
+    console.log(users)
     res.status(200).json({
         message: 'Get All Home Page successfully',
         usia,

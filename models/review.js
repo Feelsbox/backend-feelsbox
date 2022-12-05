@@ -22,13 +22,13 @@ module.exports = (sequelize, DataTypes) => {
     modelName: 'review',
   });
 
-  review.associate = function(models) {
-    review.belongsTo(models.konsultasi, {
-      foreignKey: 'konsultasi_id',
-    });
-    review.belongsTo(models.User, {
-      foreignKey: 'user_code',
-    });
-  }
+  // review.associate = function(models) {
+  //   review.belongsTo(models.Konsultasi, {
+  //     foreignKey: 'konsultasi_id',
+  //   });
+  //   review.belongsTo(models.User, {
+  //     foreignKey: 'user_code',
+  //   });
+  // }
   return review;
 };

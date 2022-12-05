@@ -15,12 +15,12 @@ const user = [
       instansi: 'Jakarta',
   },
   {
-      name: 'User',
+      name: 'User Testing',
       email: 'tes@gmail.com',
       password: bcrypt.hashSync("aaa",10),
       phone: "6281818261976",
       role: 'user',
-      gender: 'Laki-laki',
+      gender: 'pria',
       umur: '12 - 16',
       domisili: 'Jakarta',
       jenis_pekerjaan: 'Mahasiswa',
@@ -32,6 +32,7 @@ const user = [
     password: bcrypt.hashSync("aaa",10),
     gender: "wanita",
     umur: "lansia awal",
+    role: 'user',
   },
   {
     name: "Aimee Leonard",
@@ -39,6 +40,7 @@ const user = [
     password: bcrypt.hashSync("aaa",10),
     gender: "lainya",
     umur: "dewasa akhir",
+    role: 'user',
   },
   {
     name: "Jesse Pitts",
@@ -46,13 +48,15 @@ const user = [
     password: bcrypt.hashSync("aaa",10),
     gender: "pria",
     umur: "remaja awal",
+    role: 'user',
   },
   {
     name: "Abdul Lester",
     email: "wavyw@mailinator.com",
     password: bcrypt.hashSync("aaa",10),
     gender: "wanita",
-    umur: "remaja akhir"
+    umur: "remaja akhir",
+    role: 'user',
   },
   {
     name: "Catherine Farmer",
@@ -66,35 +70,40 @@ const user = [
     email: "ligora@mailinator.com",
     password: bcrypt.hashSync("aaa",10),
     gender: "lainnya",
-    umur: "dewasa awal"
+    umur: "dewasa awal",
+    role: 'user',
   },
   {
     name: "Carla Russo",
     email: "wyzeheg@mailinator.com",
     password: bcrypt.hashSync("aaa",10),
     gender: "wanita",
-    umur: "remaja awal"
+    umur: "remaja awal",
+    role: 'user',
   },
   {
     name: "Tara Rojas",
     email: "jemacila@mailinator.com",
     password: bcrypt.hashSync("aaa",10),
     gender: "wanita",
-    umur: "dewasa akhir"
+    umur: "dewasa akhir",
+    role: 'user',
   },
   {
     name: "Oscar Buckner",
     email: "pewozic@mailinator.com",
     password: bcrypt.hashSync("aaa",10),
     gender: "wanita",
-    umur: "lansia akhir"
+    umur: "lansia akhir",
+    role: 'user',
   },
   {
     name: "Marsden Vang",
     email: "fole@mailinator.com",
     password: bcrypt.hashSync("aaa",10),
     gender: "pria",
-    umur: "dewasa awal"
+    umur: "dewasa awal",
+    role: 'user',
   },
   {
     name: "William Anderson",
