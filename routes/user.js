@@ -8,6 +8,8 @@ const {homePageUser} = require('../controllers/homePageController');
 const {createKeluhan} = require('../controllers/keluhanController');
 const {getAllJadwalPsikolog} = require('../controllers/jadwalPsikologController')
 const {makeBookingKonsultasi, getAllTransaksion} = require('../controllers/bookingController')
+const {getHasilTesById} = require('../controllers/hasilTesController');
+const {getAppointmentUser} = require('../controllers/appoinmentController')
 
 router.group('/user', [middlewareBasic, middlewareUser], (router) => {
     
@@ -23,6 +25,9 @@ router.group('/user', [middlewareBasic, middlewareUser], (router) => {
 
     router.get('/transaksi', getAllTransaksion)
 
+    router.get('/hasiltes', getHasilTesById);
+
+    router.get('/appointment', getAppointmentUser)
 });
 
 let routerAdmin = router.init();

@@ -57,7 +57,7 @@ const fileFilter = (req, file, cb) => {
 }
 
 
-// main();
+main();
 
 const app = express();
 const cors = require('cors')

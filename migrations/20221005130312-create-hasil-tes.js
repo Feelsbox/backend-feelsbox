@@ -26,6 +26,9 @@ module.exports = {
       diagnose: {
         type: Sequelize.STRING
       },
+      keterangan: {
+        type: Sequelize.STRING
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE

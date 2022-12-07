@@ -18,6 +18,7 @@ module.exports = (sequelize, DataTypes) => {
     bdi: DataTypes.INTEGER,
     awareness: DataTypes.STRING,
     diagnose: DataTypes.STRING,
+    keterangan: DataTypes.STRING
   }, {
     sequelize,
     modelName: 'HasilTes',

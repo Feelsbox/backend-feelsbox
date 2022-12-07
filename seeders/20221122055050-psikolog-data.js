@@ -4,21 +4,31 @@ const psikolog = [
   {
     user_id: 13,
     nomor: "01-52C-5735",
-    spesialisasi: "keluarga",
+    spesialisasi: "sebaya",
     surat_izin: "images/surat-izin/default.pdf"
   },{
     user_id: 14,
     nomor: "01-52C-5735",
-    spesialisasi: "asmara",
+    spesialisasi: "konselor",
     surat_izin: "images/surat-izin/default.pdf"
-
   },
   {
     user_id: 15,
     nomor: "01-52C-5735",
-    spesialisasi: "pengembangan diri",
-    surat_izin: "images/surat-izin/default.pdf"
-
+    spesialisasi: "sebaya",
+    surat_izin: "images/surat-izin/default.pdf",
+  },
+  {
+    user_id: 16,
+    nomor: "01-52C-5735",
+    spesialisasi: "konselor",
+    surat_izin: "images/surat-izin/default.pdf",
+  },
+  {
+    user_id: 17,
+    nomor: "01-52C-5735",
+    spesialisasi: "konselor",
+    surat_izin: "images/surat-izin/default.pdf",
   }
 ]
 

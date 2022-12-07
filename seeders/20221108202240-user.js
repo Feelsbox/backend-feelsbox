@@ -106,27 +106,47 @@ const user = [
     role: 'user',
   },
   {
-    name: "William Anderson",
-    email: "cijil@mailinator.com",
+    name: "Aji Darmawan",
+    email: "ajidarmawan@gmail.com",
     password: bcrypt.hashSync("psikolog",10),
-    gender: "wanita",
-    instansi: "Tel-u",
-    role: "psikolog"
+    gender: "pria",
+    // instansi: "Tel-u",
+    role: "psikolog",
+    image: "images/profile/Aji-Darmawan.png"
   },
   {
-    name: "Kibo Mccall",
-    email: "sejotu@mailinator.com",
+    name: "Iip Fariha",
+    email: "iipfariha@gmail.com",
     password: bcrypt.hashSync("psikolog",10),
-    gender: "pria",
-    instansi: "Tel-u",
-    role: "psikolog"
+    gender: "wanita",
+    // instansi: "Tel-u",
+    role: "psikolog",
+    image: "images/profile/Iip-Fariha.png"
   },{
-    name: "Zawely Wunoh",
-    email: "zawely@mailinator.com",
+    name: "Muhammad Nafianto",
+    email: "muhammadnafianto@gmail.com",
     password: bcrypt.hashSync("psikolog",10),
     gender: "pria",
-    instansi: "Tel-u",
-    role: "psikolog"
+    // instansi: "Tel-u",
+    role: "psikolog",
+    image: "images/profile/Muhammad-Nafianto.png"
+  },{
+    name: "Nurul Fathia",
+    email: "nurulfathia@gmail.com",
+    password: bcrypt.hashSync("psikolog",10),
+    gender: "wanita",
+    // instansi: "Tel-u",
+    role: "psikolog",
+    image: "images/profile/Nurul-Fathia.png"
+  },
+  {
+    name: "Sangga Nia Wati",
+    email: "sanggania@gmail.com",
+    password: bcrypt.hashSync("psikolog",10),
+    gender: "wanita",
+    // instansi: "Tel-u",
+    role: "psikolog",
+    image: "images/profile/Sangga-Nia-Wati.png"
   }
 ]
 

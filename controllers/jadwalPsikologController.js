@@ -58,8 +58,13 @@ exports.getAllJadwalPsikolog = async (req, res) => {
                 tanggalKey = tanggalValue
                 tanggal[tanggalKey] = []
             }
-
+            
             tanggal[tanggalKey].push(e)
+            
+            tanggal[tanggalKey].sort((a,b) => {
+                return a.jam - b.jam
+            })
+            
         });
 
         // hitung jumlah data dari masing" tabel tangga

@@ -5,7 +5,8 @@ const hasilTes = [
   {
     user_id: 2,
     bdi: 35,
-    awareness: "psikolog",
+    keterangan: "Depresi ringan",
+    awareness: "Anda Harus Ke Psikolog",
     createdAt: new Date(),
     updatedAt: new Date()
   },

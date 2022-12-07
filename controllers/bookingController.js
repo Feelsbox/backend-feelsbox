@@ -185,7 +185,7 @@ No Order: ${order_id}
 Bank : ${chargeResponse.va_numbers[0].bank}
 Virtual Account Pembayaran: ${chargeResponse.va_numbers[0].va_number}
 `
-            // wa.sendMessage(`${client.phone}@c.us`, pesan)
+            wa.sendMessage(`${client.phone}@c.us`, pesan)
 
             return res.json({
                 message: 'Charge Response:',
@@ -277,7 +277,7 @@ Passcode: ${res.pstn_password}
         
 Pastikan kamu bergabung ke zoom sesuai jadwal ya :)
         `
-                        // wa.sendMessage(`${phone}@c.us`,pesan)
+                    wa.sendMessage(`${phone}@c.us`,pesan)
         
                         console.log(statusResponse)
         
