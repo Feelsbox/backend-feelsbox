@@ -25,7 +25,7 @@ module.exports = {
      *   isBetaMember: false
      * }], {});
     */
-    await queryInterface.bulkInsert('jadwalpsikologs', jadwalpsikolog, {});
+    await queryInterface.bulkInsert('JadwalPsikologs', jadwalpsikolog, {});
   },
 
   async down (queryInterface, Sequelize) {
