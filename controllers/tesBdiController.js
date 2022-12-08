@@ -73,7 +73,7 @@ exports.penilaianTesBdi = async (req, res) => {
 
     const hasilTes = await HasilTes.update({
         user_id: id,
-        kesimpulan: keterangan,
+        keterangan,
         type: "bdi",
         nilai: nilai,
         createdAt: new Date(),

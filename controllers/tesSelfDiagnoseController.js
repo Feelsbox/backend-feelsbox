@@ -1,4 +1,5 @@
 const {TesDiagnosse} = require('../models')
+const {Konsultasi} = require('../models')
 
 exports.getSoalDiagnosse = async (req, res) => {
     try {
@@ -31,6 +32,15 @@ exports.penilaianTesSelfDiagnose = async (req, res) => {
     }
 
     if(nilaisesi1 >= 2 && nilaisesi2 >= 2){
+
+        const konsultasi = await Konsultasi.update({
+            diagnose: "Anda Harus Ke Psikolog"
+        },{
+            where: {
+                user_id: req.user.id
+            }
+        })
+
         return res.status(200).json({
             message: 'Status Self Awarness',
             keterangan: 'Anda Harus Ke Psikolog',
@@ -39,6 +49,15 @@ exports.penilaianTesSelfDiagnose = async (req, res) => {
             deskripsi: "Hendaknya kamu menghubungi psikolog/psikiater. Jangan takut, semua akan baik-baik aja"
         })
     }else{
+
+        const konsultasi = await Konsultasi.update({
+            diagnose: "Anda Tidak Perlu Ke Psikolog"
+        },{
+            where: {
+                user_id: req.user.id
+            }
+        })
+
         return res.status(200).json({
             message: 'Status Self Awarness',
             keterangan: 'Anda Tidak Perlu Ke Psikolog',
