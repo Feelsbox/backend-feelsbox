@@ -66,6 +66,15 @@ exports.registerUser = async (req, res) => {
             expiresIn: "1d"
         });
 
+const pesan = `
+Halo ${user.name}, terima kasih telah mendaftar di Feelsbox. 
+Ini adalah Bot Feelsbox, Segala jenis informasi konsultasi akan kami sampaikan disini
+
+`
+
+wa.sendMessage(`${phone}@c.us`,pesan)
+
+
         res.status(201).json({
             message: 'User created successfully',
             user,

@@ -1,4 +1,4 @@
-const {JadwalPsikolog, User} = require('../models');
+const {JadwalPsikolog, User, Psikolog} = require('../models');
 const jadwalpsikolog = require('../models/jadwalpsikolog');
 const Op = require('sequelize').Op;
 
@@ -41,7 +41,10 @@ exports.getAllJadwalPsikolog = async (req, res) => {
         include:{
             model: User,
             as: 'psikolog',
-            attributes: {exclude: ['password']}
+            attributes: {exclude: ['password']},
+            include: {
+                model: Psikolog,
+            }
         },
         order: [
             ['tanggal', 'ASC'],
